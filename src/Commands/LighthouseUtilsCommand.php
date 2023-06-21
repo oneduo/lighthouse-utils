@@ -1,12 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+declare(strict_types=1);
+
+namespace Oneduo\LighthouseUtils\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LighthouseUtilsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'lighthouse-utils';
 
     public $description = 'My command';
 

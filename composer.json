@@ -1,24 +1,30 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "oneduo/lighthouse-utils",
+    "description": "Lighthouse PHP utils",
     "keywords": [
-        ":vendor_name",
+        "oneduo",
         "laravel",
-        ":package_slug"
+        "lighthouse-utils"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/oneduo/lighthouse-utils",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
-            "role": "Developer"
+            "name": "Mikaël Popowicz",
+            "email": "mikael@popowicz.fr",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Charaf Rezrazi",
+            "email": "charaf@rezrazi.fr",
+            "role": "Maintainer"
         }
     ],
     "require": {
         "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "illuminate/contracts": "^10.0",
+        "nuwave/lighthouse": "^6.0",
+        "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -35,13 +41,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Oneduo\\LighthouseUtils\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Oneduo\\LighthouseUtils\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -61,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Oneduo/LighthouseUtils\\LighthouseUtils\\LighthouseUtilsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LighthouseUtils": "Oneduo/LighthouseUtils\\LighthouseUtils\\Facades\\LighthouseUtils"
             }
         }
     },

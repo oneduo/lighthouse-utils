@@ -1,36 +1,28 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+declare(strict_types=1);
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+namespace Oneduo\LighthouseUtils\Tests;
+
+use Nuwave\Lighthouse\LighthouseServiceProvider;
+use Oneduo\LighthouseUtils\LighthouseUtilsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
-            SkeletonServiceProvider::class,
+            LighthouseUtilsServiceProvider::class,
+            LighthouseServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        $migration->up();
-        */
+        config()->set('lighthouse.schema_path', __DIR__.'/Support/schema.graphql');
+        config()->set('lighthouse-utils.enums.paths', [
+            [__DIR__.'/Enums', 'Oneduo\\LighthouseUtils\\Tests', __DIR__],
+        ]);
     }
 }

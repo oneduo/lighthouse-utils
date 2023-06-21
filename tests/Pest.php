@@ -1,5 +1,8 @@
 <?php
 
-use VendorName\Skeleton\Tests\TestCase;
+declare(strict_types=1);
 
-uses(TestCase::class)->in(__DIR__);
+use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
+use Oneduo\LighthouseUtils\Tests\TestCase;
+
+uses(TestCase::class, MakesGraphQLRequests::class)->in(__DIR__);
