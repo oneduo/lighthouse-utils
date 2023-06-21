@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Oneduo\LighthouseUtils;
 
+use Illuminate\Support\Arr;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -23,5 +24,13 @@ class LighthouseUtilsServiceProvider extends PackageServiceProvider
         ]);
 
         $enumRegistrar->register();
+
+        config()->set(
+            'lighthouse.namespaces.directives',
+            [
+                ...Arr::wrap(config('lighthouse.namespaces.directives')),
+                'Oneduo\\LighthouseUtils\\Directives',
+            ],
+        );
     }
 }
